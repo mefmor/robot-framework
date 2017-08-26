@@ -13,10 +13,16 @@ echo ===========================================================================
 
 set info_tag=[ INFO ]
 set error_tag=[ ERROR ]
+set ini_file=run.ini
 
-set results_folder=.\results
-set libraries_folder=.\lib
-set scenarios_src=.\scenarios\
+if not exist %ini_file% (
+	echo %time% %error_tag% File %ini_file% with settings are absent
+	pause
+	exit
+)
+
+rem Parse ini file
+FOR /F "tokens=*" %%A IN ('type "%ini_file%"') DO SET %%A
 
 echo %time% %info_tag% Cleaning old results...
 
