@@ -1,5 +1,7 @@
 @echo off
 
+title Firefox Node
+
 echo ==============================================================================
 echo ====                                                                      ====
 echo ====                         Mozilla Firefox Node                         ====
@@ -9,23 +11,14 @@ echo ====                       Powered by Selenium Grid                       =
 echo ====                                                                      ====
 echo ==============================================================================
 
-set info_tag=[ INFO ]
-set error_tag=[ ERROR ]
-set selenium_server_jar=.\selenium-server-standalone-3.4.0.jar
+
+call set_common.cmd
 
 set hub_host=localhost
 set hub_port=4444
 set ff_driver_path=.\drivers\geckodriver-x32-0.18.0.exe
 set ff_node_port=5555
 
-echo %time% %info_tag% Trying to find selenium server...
-if not exist %selenium_server_jar% (
-	echo %time% %error_tag% Selenium server jar not found by path %selenium_server_jar%
-	pause
-	exit
-)
-
-echo %time% %info_tag% Selenium server jar found by path %selenium_server_jar%
 
 echo %time% %info_tag% Trying to find Geckodriver...
 if not exist %ff_driver_path% (
